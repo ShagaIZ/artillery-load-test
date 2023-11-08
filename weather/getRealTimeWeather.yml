@@ -1,0 +1,32 @@
+config:
+  target: "https://weatherapi-com.p.rapidapi.com"
+  phases:
+    - duration: 1
+      arrivalRate: 1
+      rampTo: 1
+      name: ramp up
+  plugins:
+    expect:
+      outputFormat: pretty
+      
+scenarios:       
+  - flow:
+      - log: "Current weather"
+      - get:
+          url: "/current.json?q=54.7431, 55.9678"
+          headers:
+            X-RapidAPI-Key: "{{ $env.token }}"
+            X-RapidAPI-Host: "weatherapi-com.p.rapidapi.com"
+          capture:
+          - json: "$.location.name"
+            as: location.name
+          expect:
+            - statusCode: 200
+            - hasProperty: "location.name"
+            - equals:
+                - "{{location.name}}"
+                - "Ufa"
+            
+            
+            
+        
