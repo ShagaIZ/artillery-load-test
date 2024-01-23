@@ -4,13 +4,13 @@
 
 ### Commands
 
-
+Run tests with debug mode
 ```sh
-Run tests with debug mode DEBUG=http:response artillery run {name of a config}
+DEBUG=http:response artillery run {name of a config}
 ```
-
+Run tests with disable default summary 
 ```sh
-Run tests with disable default summary artillery run  --quiet - {name of a config}
+artillery run  --quiet - {name of a config}
 ```
 
 
